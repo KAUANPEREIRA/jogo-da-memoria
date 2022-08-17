@@ -12,11 +12,15 @@ const App = ()=>{
 
          <C.InfoArea>
 
+          ...
+
          </C.InfoArea>
          <button>Reiniciar</button>
 
       </C.Info>
       <C.GridArea>
+
+        ...
 
       </C.GridArea>
     </C.Container>
