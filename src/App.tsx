@@ -1,5 +1,6 @@
 import * as C from './App.styles'
 import LogoImg from './assets/devmemory_logo.png'
+import InfoItem from './components/InfoItem'
 
 
 const App = ()=>{
@@ -12,9 +13,13 @@ const App = ()=>{
 
          <C.InfoArea>
 
-          ...
+        <InfoItem label='Tempo' value='00:00'/>
+        <InfoItem label='Movimentos' value='0'/>
+
+
 
          </C.InfoArea>
+        
          <button>Reiniciar</button>
 
       </C.Info>
