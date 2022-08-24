@@ -22,12 +22,8 @@ const App = ()=>{
          </C.LogoLink>
 
          <C.InfoArea>
-
-        <InfoItem label={time} value='00:00'/>
-        <InfoItem label='Movimentos' value='0'/>
-
-
-
+          <InfoItem label={time} value='00:00'/>
+          <InfoItem label='Movimentos' value='0'/>
          </C.InfoArea>
         
         <Button label='Reiniciar' icon={RestartIcon} onClick={ResetGrid}/>
