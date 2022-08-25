@@ -30,8 +30,11 @@ const App = ()=>{
 
       </C.Info>
       <C.GridArea>
+        <C.Grid>
+          
+        </C.Grid>
 
-        ...
+      
 
       </C.GridArea>
     </C.Container>
