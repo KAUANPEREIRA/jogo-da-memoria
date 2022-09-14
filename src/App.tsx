@@ -7,6 +7,7 @@ import RestartIcon from './svgs/restart.svg'
 import { GridItemType } from './types/GridItemType'
 import { items } from './data/items'
 import { GridItem } from './components/GridItem'
+import { formateTime } from './helpers/FormateTime'
 
 
 
@@ -27,6 +28,19 @@ const App = () => {
   useEffect(() => {
     ResetGrid()
   }, [])
+
+  useEffect(()=>{
+
+    const timer = setInterval(()=>{
+      if(playIng){
+        setTimeEsladed(timeEsladed + 1)
+      }
+      
+    },1000)
+    return () => clearInterval(timer)
+
+
+  },[playIng,timeEsladed])
 
   /*funcao criada no componente filho , feita e utilizada no componente pai */
   const ResetGrid = () => {
@@ -77,7 +91,7 @@ const App = () => {
         </C.LogoLink>
 
         <C.InfoArea>
-          <InfoItem label={time} value='00:00' />
+          <InfoItem label={time} value={formateTime(timeEsladed)} />
           <InfoItem label='Movimentos' value='0' />
         </C.InfoArea>
 

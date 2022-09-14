@@ -11,10 +11,13 @@ type GridItemProps ={
 }
 export const GridItem = ({item,onClick}:GridItemProps)=>{
     return(
-        <C.Container onClick={onClick}>
+        <C.Container 
+        showBackground={item.permanentShow===true || item.show === true}
+        
+        onClick={onClick}>
             ...
             {item.permanentShow=== false && item.show==false &&
-             <C.Icon src={b7Logo} alt=""/>
+             <C.Icon src={b7Logo} alt="" opacity={.1}/>
             }
 
             {item.permanentShow===true || item.show === true && item.item !== null &&

@@ -1,11 +1,28 @@
 import styled from "styled-components";
 
-export const Container = styled.div `
-    cursor:pointer;
+type ContainerProps = {
+    showBackground:boolean
+     
+}
 
+export const Container = styled.div<ContainerProps> `
+    cursor:pointer;
+    background-color:${props=> props.showBackground===true? "#1550FF" : "#E2E3E3"} ;
+    height:100px;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 `
 
-export const Icon = styled.img `
+type IconProps = {
+    opacity?:number
+}
+
+export const Icon = styled.img<IconProps> `
+    width:40px;
+    height:40px;
+    opacity:${props=> props.opacity ?  props.opacity : 1 } ;
 
 
 `
