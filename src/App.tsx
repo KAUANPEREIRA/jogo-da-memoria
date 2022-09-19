@@ -49,10 +49,10 @@ const App = () => {
     setMoveCount(0)
     setShowCount(0)
 
-    let temporarioGrid : GridItemType[] = []
+    let tmpGrid : GridItemType[] = []
     //passo 2 criar crid o vazio 
     for(let i=0;i<(items.length * 2 );i++){
-      temporarioGrid.push({
+      tmpGrid.push({
         item:null,
         show:false,
         permanentShow:false
@@ -63,16 +63,16 @@ const App = () => {
     for(let w=0;w<2;w++){
       for(let i=0; i<items.length;i++){
         let pos = -1
-        while(pos<0 || temporarioGrid[pos].item !==null){
+        while(pos<0 || tmpGrid[pos].item !==null){
           pos = Math.floor(Math.random() * (items.length * 2))
         }
-        temporarioGrid[pos].item = i
+        tmpGrid[pos].item = i
       }
     }
 
 
     //passo 2.3 jogar grid temporario no state
-    setGridItems(temporarioGrid)
+    setGridItems(tmpGrid)
 
     //passo 3 criar jogo
 
@@ -80,6 +80,17 @@ const App = () => {
   }
 
   const handleItemClick =(index:number)=>{
+    if(playIng && index !== null && showCount < 2 ){
+      let tmpGrid = [...gridItems]
+
+      if(tmpGrid[index].permanentShow === false && tmpGrid[index].show === false){
+        tmpGrid[index].show = true
+        setShowCount(showCount + 1)
+
+      }
+
+      setGridItems(tmpGrid)
+    }
 
   }
 
@@ -105,7 +116,6 @@ const App = () => {
             key={index}
             item={item}
             onClick={()=>handleItemClick(index)}
-
 
             
             />

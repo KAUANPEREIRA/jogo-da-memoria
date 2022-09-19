@@ -15,7 +15,7 @@ export const GridItem = ({item,onClick}:GridItemProps)=>{
         showBackground={item.permanentShow===true || item.show === true}
         
         onClick={onClick}>
-            ...
+            
             {item.permanentShow=== false && item.show==false &&
              <C.Icon src={b7Logo} alt="" opacity={.1}/>
             }
