@@ -85,11 +85,8 @@ const App = () => {
   // verifica final do jogo 
   useEffect(()=>{
     if(moveCount > 0 && gridItems.every(item => item.permanentShow === true)){
-
       setPlayIng(false)
-      
     }
-
 
   },[moveCount,gridItems])
 
@@ -124,10 +121,10 @@ const App = () => {
 
     //passo 2.3 jogar grid temporario no state
     setGridItems(tmpGrid)
-
     //passo 3 criar jogo
 
     setPlayIng(true)
+
   }
 
   const handleItemClick =(index:number)=>{
@@ -137,9 +134,7 @@ const App = () => {
       if(tmpGrid[index].permanentShow === false && tmpGrid[index].show === false){
         tmpGrid[index].show = true
         setShowCount(showCount + 1)
-
       }
-
       setGridItems(tmpGrid)
     }
 
@@ -167,8 +162,6 @@ const App = () => {
             key={index}
             item={item}
             onClick={()=>handleItemClick(index)}
-
-            
             />
 
             
