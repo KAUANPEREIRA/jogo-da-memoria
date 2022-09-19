@@ -42,6 +42,57 @@ const App = () => {
 
   },[playIng,timeEsladed])
 
+  //verificar se os abertos são iguais 
+  //opende esta filtrando e so entra no array oque tiver true 
+  useEffect(()=>{
+    if(showCount === 2){
+      let opened = gridItems.filter(item => item.show === true)
+      if(opened.length === 2){
+
+        if(opened[0].item === opened[1].item){
+          
+        let tmpGrid = [...gridItems]
+          for(let i in tmpGrid){
+            if(tmpGrid[i].show){
+              tmpGrid[i].permanentShow = true
+              tmpGrid[i].show = false
+            }
+          }
+          setGridItems(tmpGrid)
+          setShowCount(0)
+
+        }else{
+          
+         setTimeout(()=>{
+          let tmpGrid = [...gridItems]
+          for(let i in tmpGrid){
+            tmpGrid[i].show = false
+          }
+          setGridItems(tmpGrid)
+          setShowCount(0)
+
+
+         },1000)
+        }
+
+        setMoveCount(moveCount => moveCount + 1)
+
+      }
+    }
+
+  },[showCount, gridItems])
+
+  // verifica final do jogo 
+  useEffect(()=>{
+    if(moveCount > 0 && gridItems.every(item => item.permanentShow === true)){
+
+      setPlayIng(false)
+      
+    }
+
+
+  },[moveCount,gridItems])
+
   /*funcao criada no componente filho , feita e utilizada no componente pai */
   const ResetGrid = () => {
     //passo 1 reset do jogo
@@ -103,7 +154,7 @@ const App = () => {
 
         <C.InfoArea>
           <InfoItem label={time} value={formateTime(timeEsladed)} />
-          <InfoItem label='Movimentos' value='0' />
+          <InfoItem label='Movimentos' value={moveCount.toString()} />
         </C.InfoArea>
 
         <Button label='Reiniciar' icon={RestartIcon} onClick={ResetGrid} />

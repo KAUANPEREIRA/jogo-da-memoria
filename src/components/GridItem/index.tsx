@@ -20,7 +20,7 @@ export const GridItem = ({item,onClick}:GridItemProps)=>{
              <C.Icon src={b7Logo} alt="" opacity={.1}/>
             }
 
-            {item.permanentShow===true || item.show === true && item.item !== null &&
+            {(item.permanentShow || item.show )&& item.item !== null &&
             <C.Icon src={items[item.item].icon} alt=""/>
 
 
